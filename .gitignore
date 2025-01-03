@@ -5,6 +5,8 @@ __pycache__/
 log
 # C extensions
 *.so
+data/wsj0-2mix
+*wav
 
 # Distribution / packaging
 .Python
