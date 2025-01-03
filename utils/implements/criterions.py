@@ -18,7 +18,7 @@ def l2norm(mat, keepdim=False):
 def l1norm(mat, keepdim=False):
     return torch.norm(mat, dim=-1, keepdim=keepdim, p=1)
 
-@dataclass(slots=True)
+@dataclass() # slots=True
 class STFTBase(torch.nn.Module):
     """
     Base layer for (i)STFT
@@ -65,7 +65,7 @@ class STFTBase(torch.nn.Module):
                 f"kernel_size={self.K.shape[0]}x{self.K.shape[2]}")
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class STFT(STFTBase):
     """
     Short-time Fourier Transform as a Layer
@@ -113,7 +113,7 @@ class STFT(STFTBase):
         return m, p
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class PIT_SISNR_mag:
     device: torch.device
     frame_length: int
@@ -176,7 +176,7 @@ class PIT_SISNR_mag:
         return torch.sum(min_perutt) / num_utts
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class PIT_SISNR_time:
     device: torch.device
     num_spks: int
@@ -217,7 +217,7 @@ class PIT_SISNR_time:
         return torch.sum(min_perutt) / num_utts
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class PIT_SISNRi:
     device: torch.device
     num_spks: int
@@ -260,7 +260,7 @@ class PIT_SISNRi:
         return torch.sum(min_perutt) / num_utts, pscore[min_idx]
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class PIT_SDRi:
     device: torch.device
     dump: int

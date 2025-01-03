@@ -2,7 +2,7 @@ import os
 import torch
 from loguru import logger
 from torchinfo import summary as summary_
-from ptflops import get_model_complexity_info
+# from ptflops import get_model_complexity_info
 from thop import profile
 import numpy as np
 import torch
@@ -132,10 +132,10 @@ def print_parameters_count(model):
 def model_params_mac_summary(model, input, dummy_input, metrics):
     
     # ptflpos
-    if 'ptflops' in metrics:
-        MACs_ptflops, params_ptflops = get_model_complexity_info(model, (input.shape[1],), print_per_layer_stat=False, verbose=False) # (num_samples,)
-        MACs_ptflops, params_ptflops = MACs_ptflops.replace(" MMac", ""), params_ptflops.replace(" M", "")
-        logger.info(f"ptflops: MACs: {MACs_ptflops}, Params: {params_ptflops}")
+    # if 'ptflops' in metrics:
+    #     MACs_ptflops, params_ptflops = get_model_complexity_info(model, (input.shape[1],), print_per_layer_stat=False, verbose=False) # (num_samples,)
+    #     MACs_ptflops, params_ptflops = MACs_ptflops.replace(" MMac", ""), params_ptflops.replace(" M", "")
+    #     logger.info(f"ptflops: MACs: {MACs_ptflops}, Params: {params_ptflops}")
 
     # thop
     if 'thop' in metrics:

@@ -9,7 +9,7 @@ from utils.decorators import *
 
 
 @logger_wraps()
-@dataclass(slots=False)
+@dataclass() # slots=True
 class WarmupConstantSchedule(torch.optim.lr_scheduler.LambdaLR):
     optimizer: torch.optim.Optimizer
     warmup_steps: int

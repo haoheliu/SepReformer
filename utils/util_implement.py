@@ -6,7 +6,7 @@ from loguru import logger
 from utils.decorators import *
 
 
-@dataclass(slots=True)
+@dataclass() # slots=True
 class BaseFactory:
     config: dict
 
@@ -33,7 +33,7 @@ class BaseFactory:
 
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class CriterionFactory(BaseFactory):
     device: torch.device
     
@@ -42,7 +42,7 @@ class CriterionFactory(BaseFactory):
 
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class OptimizerFactory(BaseFactory):
     parameters_policy: Any
 
@@ -51,7 +51,7 @@ class OptimizerFactory(BaseFactory):
 
 
 @logger_wraps()
-@dataclass(slots=True)
+@dataclass() # slots=True
 class SchedulerFactory(BaseFactory):
     optimizers: List[Any]
 
